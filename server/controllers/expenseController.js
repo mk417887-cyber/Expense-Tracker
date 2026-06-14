@@ -41,10 +41,14 @@ exports.createExpense = async(req, res) => {
             data: newExpense
         });
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            error: "Server Error"
-        });
+      // 1. This prints the exact error in your backend terminal console
+      console.error("DATABASE FAIL:", error); 
+
+      res.status(500).json({
+          success: false,
+          // 2. This sends the real error back to your frontend/Postman to see
+          error: error.message 
+      });
     }
 }
 

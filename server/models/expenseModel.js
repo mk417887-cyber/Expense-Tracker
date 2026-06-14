@@ -40,7 +40,7 @@ const expenseSchema = new mongoose.Schema({
 
 expenseSchema.pre( "save", function(next) {
         if(this.amount) this.amount = Math.round    (this.amount * 100) / 100;
-        next();
+     
 })
 
 const Expense = mongoose.model("CopyExpense", expenseSchema);
